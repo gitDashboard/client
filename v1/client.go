@@ -4,9 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/gitDashboard/client/v1/request"
-	"github.com/gitDashboard/client/v1/respond"
+	"github.com/gitDashboard/client/v1/response"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -28,8 +27,8 @@ func (this *GDClient) CheckAuthorization(username, repoPath, refName, operation 
 		if err != nil {
 			return false, err
 		}
-		log.Printf("respond:%v\n", string(respCnt))
-		resp := new(respond.AuthorizationRespond)
+
+		resp := new(response.AuthorizationResponse)
 		err = json.Unmarshal(respCnt, resp)
 		if err != nil {
 			return false, err

@@ -6,3 +6,9 @@ type AuthorizationRequest struct {
 	RefName        string `json:"refName"`
 	Operation      string `json:"operation"`
 }
+
+type LoginRequest struct {
+	Username string `json:"username"`
+	Type     string `json:"type"`
+	Password string `json:"password"`
+}
