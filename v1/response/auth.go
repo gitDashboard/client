@@ -5,7 +5,6 @@ type AuthorizationResponse struct {
 }
 
 type LoginResponse struct {
-	Success bool   `json:"success"`
-	Message string `json:"message"`
-	JWT     string `json:"jwt_token"`
+	BasicResponse
+	JWT string `json:"jwt_token"`
 }
