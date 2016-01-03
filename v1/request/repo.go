@@ -5,9 +5,14 @@ type RepoListRequest struct {
 }
 
 type RepoCommitsRequest struct {
-	RepoId    int    `json:"repoId"`
-	Branch    string `json:"branch"`
-	Start     int    `json:"start"`
-	Count     int    `json:"count"`
-	Ascending bool   `json:"ascending"`
+	RepoId int    `json:"repoId"`
+	Branch string `json:"branch"`
+	Start  int    `json:"start"`
+	Count  int    `json:"count"`
+}
+
+type RepoFilesRequest struct {
+	RepoId  int    `json:"repoId"`
+	RefName string `json:"refName"`
+	Parent  string `json:"parent"`
 }

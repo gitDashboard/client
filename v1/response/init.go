@@ -12,7 +12,7 @@ func init() {
 var NoRepositoryFoundError, PermissionDeniedError, FatalError, NoUserFoundError, AuthenticationFailedError Error
 
 func initErrors() {
-	FatalError = Error{Code: "Fatal Error", Message: "FatalError:"}
+	FatalError = Error{Code: "FatalError", Message: "FatalError:"}
 	PermissionDeniedError = Error{Code: "PermissionDenied", Message: "Permission Denied"}
 	NoRepositoryFoundError = Error{Code: "NoRepoFound", Message: "No Repository Found"}
 	NoUserFoundError = Error{Code: "NoUserFound", Message: "No User Found"}
