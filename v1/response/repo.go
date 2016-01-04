@@ -1,14 +1,15 @@
 package response
 
 type RepoInfo struct {
-	ID           uint   `json:"id"`
-	Name         string `json:"name"`
-	Path         string `json:"path"`
-	FolderPath   string `json:"folderPath"`
-	Url          string `json:"url"`
-	IsRepo       bool   `json:"isRepo"`
-	IsAuthorized bool   `json:"isAuthorized"`
-	Description  string `json:"description"`
+	ID           uint     `json:"id"`
+	Name         string   `json:"name"`
+	Path         string   `json:"path"`
+	FolderPath   string   `json:"folderPath"`
+	Url          string   `json:"url"`
+	IsRepo       bool     `json:"isRepo"`
+	IsAuthorized bool     `json:"isAuthorized"`
+	Description  string   `json:"description"`
+	References   []string `json:"references"`
 }
 
 type RepoListResponse struct {
@@ -40,5 +41,11 @@ type RepoFile struct {
 
 type RepoFilesResponse struct {
 	BasicResponse
-	Files []RepoFile `json:"files"`
+	Files        []RepoFile `json:"files"`
+	ParentTreeId string     `json:"parentTreeId"`
+}
+type RepoFileContentResponse struct {
+	BasicResponse
+	Size    int64  `json:"size"`
+	Content string `json:"content"`
 }
