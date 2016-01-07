@@ -9,7 +9,7 @@ func init() {
 	initErrors()
 }
 
-var NoRepositoryFoundError, PermissionDeniedError, FatalError, NoUserFoundError, AuthenticationFailedError Error
+var NoRepositoryFoundError, PermissionDeniedError, FatalError, NoUserFoundError, AuthenticationFailedError, AlreadyExistError Error
 
 func initErrors() {
 	FatalError = Error{Code: "FatalError", Message: "FatalError:"}
@@ -17,6 +17,7 @@ func initErrors() {
 	NoRepositoryFoundError = Error{Code: "NoRepoFound", Message: "No Repository Found"}
 	NoUserFoundError = Error{Code: "NoUserFound", Message: "No User Found"}
 	AuthenticationFailedError = Error{Code: "AuthenticationFailed", Message: "Authentication failed"}
+	AlreadyExistError = Error{Code: "AlreadyExist", Message: "Already exist"}
 }
 
 type BasicResponse struct {
