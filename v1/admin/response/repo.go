@@ -13,13 +13,14 @@ type CreateRepoResponse struct {
 }
 
 type RepoPermission struct {
-	UserID    int64  `json:"userId"`
-	UserName  string `json:"userName"`
-	GroupID   int64  `json:"groupId"`
-	GroupName string `json:"groupName"`
-	Types     string `json:"types"`
-	Ref       string `json:"ref"`
-	Granted   bool   `json:"granted"`
+	UserID    int64    `json:"userId"`
+	UserName  string   `json:"userName"`
+	GroupID   int64    `json:"groupId"`
+	GroupName string   `json:"groupName"`
+	Types     []string `json:"types"`
+	Ref       string   `json:"ref"`
+	Granted   bool     `json:"granted"`
+	Position  uint     `json:"position"`
 }
 
 type GetPermissionsResponse struct {
