@@ -17,10 +17,26 @@ type RepoListResponse struct {
 }
 
 type RepoCommit struct {
+	ID      string `json:"id"`
 	Author  string `json:"author"`
 	Email   string `json:"email"`
 	Message string `json:"message"`
 	Date    int64  `json:"date"`
+}
+
+type RepoDiffFile struct {
+	Type    string `json:"type"`
+	OldId   string `json:"oldId"`
+	OldName string `json:"oldName"`
+	NewId   string `json:"newId"`
+	NewName string `json:"newName"`
+	Patch   string `json:"patch"`
+}
+
+type RepoCommitResponse struct {
+	BasicResponse
+	Commit RepoCommit     `json:"commit"`
+	Files  []RepoDiffFile `json:"files"`
 }
 
 type RepoCommitsResponse struct {

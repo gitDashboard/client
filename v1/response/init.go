@@ -25,3 +25,16 @@ type BasicResponse struct {
 	Success bool  `json:"success"`
 	Error   Error `json:"error"`
 }
+
+type IBasicResponse interface {
+	SetSuccess(success bool)
+	SetError(respError Error)
+}
+
+func (resp *BasicResponse) SetSuccess(success bool) {
+	resp.Success = success
+}
+
+func (resp *BasicResponse) SetError(respError Error) {
+	resp.Error = respError
+}
