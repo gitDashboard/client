@@ -10,6 +10,7 @@ type RepoInfo struct {
 	IsAuthorized bool     `json:"isAuthorized"`
 	Description  string   `json:"description"`
 	References   []string `json:"references"`
+	Locked       bool     `json:"locked"`
 }
 
 type RepoListResponse struct {

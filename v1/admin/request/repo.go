@@ -16,3 +16,7 @@ type CreateRepoRequest struct {
 type UpdatePermissionsRequest struct {
 	Permissions []response.RepoPermission `json:"permissions"`
 }
+
+type RepoMoveRequest struct {
+	DestPath string `json:"destPath"`
+}
