@@ -16,3 +16,10 @@ type RepoFilesRequest struct {
 	RefName string `json:"refName"`
 	Parent  string `json:"parent"`
 }
+
+type RepoEventRequest struct {
+	RepositoryPath string `json:"path"`
+	Type           string `json:"type"`
+	User           string `json:"user"`
+	Description    string `json:"description"`
+}

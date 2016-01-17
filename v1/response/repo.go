@@ -66,3 +66,8 @@ type RepoFileContentResponse struct {
 	Size    int64  `json:"size"`
 	Content string `json:"content"`
 }
+
+type RepoEventResponse struct {
+	BasicResponse
+	EventID uint `json:"eventId"`
+}

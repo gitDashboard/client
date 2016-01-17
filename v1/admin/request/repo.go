@@ -19,4 +19,5 @@ type UpdatePermissionsRequest struct {
 
 type RepoMoveRequest struct {
 	DestPath string `json:"destPath"`
+	DestName string `json:"destName"`
 }
