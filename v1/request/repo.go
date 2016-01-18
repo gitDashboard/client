@@ -1,5 +1,9 @@
 package request
 
+import (
+	"github.com/gitDashboard/client/v1/misc"
+)
+
 type RepoListRequest struct {
 	SubPath string `json:"subPath"`
 }
@@ -20,6 +24,8 @@ type RepoFilesRequest struct {
 type RepoEventRequest struct {
 	RepositoryPath string `json:"path"`
 	Type           string `json:"type"`
+	Level          misc.EventLevel
 	User           string `json:"user"`
 	Description    string `json:"description"`
+	Reference      string `json:"reference"`
 }

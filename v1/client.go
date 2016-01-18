@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/gitDashboard/client/v1/misc"
 	"github.com/gitDashboard/client/v1/request"
 	"github.com/gitDashboard/client/v1/response"
 	"io"
@@ -47,8 +48,13 @@ func (this *GDClient) CheckAuthorization(username, repoPath, refName, operation 
 /**
 return eventId
 */
-func (this *GDClient) StartEvent(repoPath, eventType, user, eventDescription string) (uint, error) {
-	req := request.RepoEventRequest{RepositoryPath: repoPath, Type: eventType, User: user, Description: eventDescription}
+func (this *GDClient) StartEvent(repoPath, eventType, user, reference, eventDescription string, level misc.EventLevel) (uint, error) {
+	req := request.RepoEventRequest{
+		RepositoryPath: repoPath,
+		Type:           eventType,
+		Level:          level,
+		User:           user, Reference: reference,
+		Description: eventDescription}
 	reqBytes, err := json.Marshal(req)
 	if err != nil {
 		return 0, err
@@ -87,8 +93,14 @@ func (this *GDClient) FinishEvent(eventId uint) error {
 	}
 }
 
-func (this *GDClient) AddEvent(repoPath, eventType, user, eventDescription string) (uint, error) {
-	req := request.RepoEventRequest{RepositoryPath: repoPath, Type: eventType, User: user, Description: eventDescription}
+func (this *GDClient) AddEvent(repoPath, eventType, user, reference, eventDescription string, level misc.EventLevel) (uint, error) {
+	req := request.RepoEventRequest{
+		RepositoryPath: repoPath,
+		Type:           eventType,
+		Level:          level,
+		User:           user,
+		Reference:      reference,
+		Description:    eventDescription}
 	reqBytes, err := json.Marshal(req)
 	if err != nil {
 		return 0, err
