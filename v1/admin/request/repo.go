@@ -4,20 +4,17 @@ import (
 	"github.com/gitDashboard/client/v1/admin/response"
 )
 
-type CreateFolderRequest struct {
-	Path string `json:"path"`
-}
-
 type CreateRepoRequest struct {
-	Path        string `json:"path"`
+	FolderID    uint   `json:"folderId"`
+	Name        string `json:"name"`
 	Description string `json:"description"`
 }
 
 type UpdatePermissionsRequest struct {
-	Permissions []response.RepoPermission `json:"permissions"`
+	Permissions []response.Permission `json:"permissions"`
 }
 
 type RepoMoveRequest struct {
-	DestPath string `json:"destPath"`
+	FolderID uint   `json:"folderId"`
 	DestName string `json:"destName"`
 }

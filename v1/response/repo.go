@@ -2,11 +2,10 @@ package response
 
 type RepoInfo struct {
 	ID           uint     `json:"id"`
+	FolderID     uint     `json:"folderId"`
 	Name         string   `json:"name"`
 	Path         string   `json:"path"`
-	FolderPath   string   `json:"folderPath"`
 	Url          string   `json:"url"`
-	IsRepo       bool     `json:"isRepo"`
 	IsAuthorized bool     `json:"isAuthorized"`
 	Description  string   `json:"description"`
 	References   []string `json:"references"`

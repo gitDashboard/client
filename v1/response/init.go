@@ -9,13 +9,14 @@ func init() {
 	initErrors()
 }
 
-var NoRepositoryFoundError, PermissionDeniedError, FatalError, NoUserFoundError, NoGroupFoundError, AuthenticationFailedError, AlreadyExistError, DbError Error
+var NoRepositoryFoundError, NoFolderFoundError, PermissionDeniedError, FatalError, NoUserFoundError, NoGroupFoundError, AuthenticationFailedError, AlreadyExistError, DbError Error
 
 func initErrors() {
 	FatalError = Error{Code: "FatalError", Message: "FatalError:"}
 	DbError = Error{Code: "DbError", Message: "DbError:"}
 	PermissionDeniedError = Error{Code: "PermissionDenied", Message: "Permission Denied"}
 	NoRepositoryFoundError = Error{Code: "NoRepoFound", Message: "No Repository Found"}
+	NoFolderFoundError = Error{Code: "NoFolderFound", Message: "No Folder Found"}
 	NoUserFoundError = Error{Code: "NoUserFound", Message: "No User Found"}
 	NoGroupFoundError = Error{Code: "NoGroupFound", Message: "No Group Found"}
 	AuthenticationFailedError = Error{Code: "AuthenticationFailed", Message: "Authentication failed"}

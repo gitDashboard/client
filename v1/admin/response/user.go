@@ -9,6 +9,7 @@ type User struct {
 	Username string `json:"username"`
 	Name     string `json:"name"`
 	Email    string `json:"email"`
+	Admin    bool   `json:"admin"`
 	Password string `json:"password"`
 	Type     string `json:"type"`
 }

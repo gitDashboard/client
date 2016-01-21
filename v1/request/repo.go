@@ -4,10 +4,6 @@ import (
 	"github.com/gitDashboard/client/v1/misc"
 )
 
-type RepoListRequest struct {
-	SubPath string `json:"subPath"`
-}
-
 type RepoCommitsRequest struct {
 	RepoId int    `json:"repoId"`
 	Branch string `json:"branch"`
