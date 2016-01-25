@@ -5,11 +5,11 @@ import (
 )
 
 type Permission struct {
-	Users    []User   `json:"users"`
-	Types    []string `json:"types"`
-	Ref      string   `json:"ref"`
-	Granted  bool     `json:"granted"`
-	Position uint     `json:"position"`
+	Users    []publicResponse.User `json:"users"`
+	Types    []string              `json:"types"`
+	Ref      string                `json:"ref"`
+	Granted  bool                  `json:"granted"`
+	Position uint                  `json:"position"`
 }
 
 type GetPermissionsResponse struct {

@@ -1,7 +1,14 @@
 package request
 
+import (
+	basicresponse "github.com/gitDashboard/client/v1/response"
+)
+
 type CreateFolderRequest struct {
-	ParentID    uint   `json:"parentId"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
+}
+
+type SetFolderAdminsRequest struct {
+	Admins []basicresponse.User `json:"admins"`
 }

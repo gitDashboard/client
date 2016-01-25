@@ -7,3 +7,7 @@ import (
 type CreateFolderResponse struct {
 	publicResponse.BasicResponse
 }
+
+type SetFolderAdminsResponse struct {
+	publicResponse.BasicResponse
+}
