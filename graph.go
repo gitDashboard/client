@@ -1,12 +1,15 @@
 package client
 
 import (
+	"crypto/md5"
 	"fmt"
 	git "gopkg.in/libgit2/git2go.v22"
+	"io"
 	"path/filepath"
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 )
 
 const (
@@ -76,12 +79,14 @@ func (a ByTime) Less(i, j int) bool {
 }
 
 func drawCommit(cmt *GraphCommit) string {
-	message := "Id:" + cmt.Commit.Id().String()
-	parent := cmt.Commit.Parent(0)
-	if parent != nil {
-		message = message + "  parent:" + parent.Id().String() + "date:" + strconv.FormatInt(cmt.Commit.Committer().When.Unix(), 10)
+	message := strings.Replace(cmt.Commit.Summary(), "'", "\"", -1)
+	message = strings.Replace(message, "\n", " ", -1)
+	if len(message) > 50 {
+		message = message[0:50] + "..."
 	}
-	return fmt.Sprintf("var %s = createCommit(stage,%d,%d,\"%s\");\n", "cmt_"+cmt.Commit.Id().String(), cmt.X, cmt.Y, message)
+	emailHash := md5.New()
+	io.WriteString(emailHash, cmt.Commit.Author().Email)
+	return fmt.Sprintf("var %s = createCommit(stage,'%s',%d,%d,'%s','%x','%s','%s');\n", "cmt_"+cmt.Commit.Id().String(), cmt.Commit.Id().String(), cmt.X, cmt.Y, message, emailHash.Sum(nil), cmt.Commit.Author().Name+"<"+cmt.Commit.Author().Email+">", cmt.Commit.Author().When.Format(time.ANSIC))
 }
 
 func drawCommitConnection(src, dst *GraphCommit) string {
@@ -169,7 +174,6 @@ func GenerateGraph(gitDirPath string) (string, error) {
 			cmt.Y = baseY + (b+1)*DELTA_Y
 
 		}
-
 	}
 	maxY = baseY + (len(notEmptyBranches))*DELTA_Y
 
@@ -183,7 +187,7 @@ func GenerateGraph(gitDirPath string) (string, error) {
 		days = append(days, day)
 	}
 	sort.Sort(sort.StringSlice(days))
-	maxX := 0
+	maxX := -DELTA_X / 2
 	for _, day := range days {
 		maxXDay := -1
 		dayCommits := TimeCommits[day]
