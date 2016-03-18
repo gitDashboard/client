@@ -9,6 +9,6 @@ type FindEventRequest struct {
 	Since       int64    `json:"since"`
 	To          int64    `json:"to"`
 	Type        string   `json:"type"`
-	First       uint     `json:"first"`
-	Count       uint     `json:"count"`
+	First       int     `json:"first"`
+	Count       int     `json:"count"`
 }
